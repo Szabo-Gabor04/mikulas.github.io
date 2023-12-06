@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="eses.css">
+    <link rel="stylesheet" href="urlap.css">
+
+    <title>Mikulás Leveleződoboz</title>
+
+</head>
+
+<body class="bg-danger">
+
+    <div class="wrapper">
+        <div class="snow layer1 a"></div>
+        <div class="snow layer1"></div>
+        <div class="snow layer2 a"></div>
+        <div class="snow layer2"></div>
+        <div class="snow layer3 a"></div>
+        <div class="snow layer3"></div>
+    </div>
+
+    <form id="santaForm">
+        <label for="name">Név:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="age">Életkor:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="wishlist">Ajándéklistád:</label>
+        <textarea id="wishlist" name="wishlist" rows="4" required></textarea>
+
+        <button type="button" onclick="sendLetter()">Levél elküldése a Mikulásnak</button>
+    </form>
+
+    <div id="santaResponse"></div>
+
+
+
+    <script>
+        function sendLetter() {
+            var name = document.getElementById('name').value;
+            var age = document.getElementById('age').value;
+            var wishlist = document.getElementById('wishlist').value;
+
+            var response = document.getElementById('santaResponse');
+            response.innerHTML = '';
+
+            // Ellenőrzi, hogy minden mezőt kitöltöttek-e
+            if (name && age && wishlist) {
+                // Mikulás válasza (itt csak egy egyszerű példa)
+                var santaMessage = document.createElement('div');
+                santaMessage.innerHTML = '<h1>Kedves ' + name + '! Köszönöm a leveledet. Nagyon örültem, hogy megosztottad velem az ajándéklistádat. Jó kis listát állítottál össze! Hohoho!</h1>';
+                response.appendChild(santaMessage);
+            } else {
+                // Hibaüzenet, ha valamelyik mező nincs kitöltve
+                response.innerHTML = '<h1 style="color: darkgreen;">Kérlek töltsd ki az összes mezőt!</h1>';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
